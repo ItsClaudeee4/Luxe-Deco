@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 import { assets } from "../assets/assets";
 import RelatedProducts from "../components/RelatedProducts";
+import { Link } from "react-router-dom";
 
 const Product = () => {
   const { productId } = useParams();
@@ -82,12 +83,21 @@ const Product = () => {
               ))}
             </div>
           </div>
-          <button
-            onClick={() => addToCart(productData._id, size)}
-            className=" bg-black text-white px-8 py-3 text-sm active:bg-gray-700"
-          >
-            شراء
-          </button>
+          <div className="flex gap-2">
+            <button
+              onClick={() => addToCart(productData._id, size)}
+              className=" bg-black text-white px-8 py-3 text-sm active:bg-gray-700"
+            >
+              شراء
+            </button>
+
+            <Link to="/card" className="relative">
+              <button className=" bg-black text-white px-8 py-3 text-sm active:bg-gray-700">
+                الذهاب إلى السلة
+              </button>
+            </Link>
+          </div>
+
           <hr className=" mt-8 sm:w-4/5" />
           <div className="text-sm text-gray-500 mt-5 flex flex-col gap-1">
             <p>منتج أصلي 100%.</p>

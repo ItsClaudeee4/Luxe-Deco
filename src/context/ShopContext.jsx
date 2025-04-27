@@ -12,9 +12,18 @@ const ShopContextProvider = (props) => {
 
   const addToCart = async (itemId, size) => {
     if (!size) {
-      toast.error("Select Product Size");
+      toast.error("حدد لون المنتج", {
+        position: "top-right", // Show error message in the top-right corner
+        autoClose: 3000, // The toast will disappear after 3 seconds
+        hideProgressBar: true, // Hide the progress bar
+        closeOnClick: true, // Close the toast on click
+        pauseOnHover: true, // Pause the toast on hover
+        draggable: true, // Make the toast draggable
+        progress: undefined, // No progress bar
+      });
       return;
     }
+
     let cartData = structuredClone(cartItems);
 
     if (cartData[itemId]) {
@@ -27,7 +36,27 @@ const ShopContextProvider = (props) => {
       cartData[itemId] = {};
       cartData[itemId][size] = 1;
     }
+
     setCartItems(cartData);
+
+    // Show a success message in the top-right corner
+    toast.success("انتقلت إلى السلة", {
+      position: "top-right", // Show success message in the top-right corner
+      autoClose: 3000, // The toast will disappear after 3 seconds
+      hideProgressBar: true, // Hide the progress bar
+      closeOnClick: true, // Close the toast on click
+      pauseOnHover: true, // Pause the toast on hover
+      draggable: true, // Make the toast draggable
+      progress: undefined, // No progress bar
+      style: {
+        // Custom style for green color and look
+        backgroundColor: "white", // Green background
+        color: "black", // White text color
+        borderRadius: "5px", // Rounded corners
+        padding: "10px 20px", // Padding inside the toast
+        fontWeight: "bold", // Bold text
+      },
+    });
   };
 
   const getCartCount = () => {

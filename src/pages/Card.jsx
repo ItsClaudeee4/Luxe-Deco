@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../context/ShopContext";
 import Title from "../components/Title";
 import { assets } from "../assets/assets";
-import CartTotal from "../components/CartTotal";
+
 import ContactForm from "../components/ContactForm";
 
 const Card = () => {
@@ -89,10 +89,7 @@ const Card = () => {
           );
         })}
       </div>
-      <div className="flex flex-row-reverse justify-between items-start my-20">
-        <div className="w-full sm:w-[450px]">
-          <CartTotal />
-        </div>
+      <div className="flex flex-col items-center  my-20">
         <div className="w-full sm:w-[450px]">
           <ContactForm />
         </div>
